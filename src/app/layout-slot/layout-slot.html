@@ -1,0 +1,14 @@
+<div class="grid grid-cols-1 md:grid-cols-2">
+  <!-- Linker Slot -->
+  <div class="bg-purple-300">
+    <ng-content select="[left]"></ng-content>
+  </div>
+
+  <div class="bg-blue-300">
+    <ng-content select="[right]"></ng-content>
+  </div>
+
+  <div class="bg-blue-300">
+    <ng-content select="[test]"></ng-content>
+  </div>
+</div>
