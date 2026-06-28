@@ -5,8 +5,8 @@ import IPost from '../types/IPost';
 
 @Injectable({ providedIn: 'root' })
 export class PostService {
-  private readonly http = inject(HttpClient); // inject() ist perfekt!
-  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/albums'; // Beispiel-API
+  private readonly http = inject(HttpClient);
+  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/albums';
 
   getPosts(): Observable<IPost[]> {
     return this.http.get<IPost[]>('https://jsonplaceholder.typicode.com/posts');
