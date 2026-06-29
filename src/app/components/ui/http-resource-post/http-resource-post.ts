@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
-import { HttpResource } from '@/http-resource';
+import { HttpResource } from '@/services/http-resource';
 
 @Component({
   selector: 'app-http-resource-post',
