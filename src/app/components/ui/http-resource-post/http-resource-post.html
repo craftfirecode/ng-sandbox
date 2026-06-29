@@ -1,0 +1,12 @@
+@if (post.isLoading()) {
+  <p>Lade Beitrag...</p>
+}
+@else if (post.error()) {
+  <p>Fehler beim Laden!</p>
+}
+@else if (post.value(); as data) {
+  <div class="flex gap-3">
+    <div class="font-bold" [innerText]="data.id"></div>
+    <div [innerText]="data.title"></div>
+  </div>
+}

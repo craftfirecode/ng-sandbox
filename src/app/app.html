@@ -32,5 +32,14 @@
       Dartmoor moorlands, the story involves betrayal and greed.
     </z-accordion-item>
   </z-accordion>
+  <div class="my-5">
+    <button type="button" z-button zType="outline" (click)="postID = 1">
+      ID 1
+    </button>
+    <button type="button" z-button zType="outline" (click)="postID = 2">
+      ID 2
+    </button>
+    <app-http-resource-post [postId]="postID" />
+  </div>
 </div>
 <z-toaster variant="default" />
