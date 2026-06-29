@@ -1,5 +1,6 @@
 // counter.service.ts
 import { Injectable, signal, computed } from '@angular/core';
+import { toast } from 'ngx-sonner';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,12 @@ export class CounterService {
 
   reset(): void {
     this.count.set(0);
+    toast('Reset is done', {
+      description: 'This is a content',
+      action: {
+        label: 'Okay!',
+        onClick: () => console.log('Undo'),
+      },
+    });
   }
 }
