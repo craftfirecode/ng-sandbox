@@ -10,5 +10,16 @@
   </app-layout-slot>
 
   <app-post-list />
+  <app-counter-display />
+
+  <button (click)="counterService.increment()">
+    + Erhöhen
+  </button>
+  <button (click)="counterService.decrement()">
+    - Senken
+  </button>
+  <button (click)="counterService.reset()" class="reset">
+    Zurücksetzen
+  </button>
 </div>
 

@@ -1,5 +1,5 @@
 <input type="number" min="1" max="100" [formControl]="limitControl" />
-
+<h6 [innerText]="'Counter:' + counterService.count()"></h6>
 <ul>
   @for (post of posts().slice(0, limit()); track post.id) {
     <li>{{ post.title }}</li>
