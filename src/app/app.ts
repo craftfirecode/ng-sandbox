@@ -1,12 +1,12 @@
-import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
-import { PostList } from './components/ui/post/post-list/post-list';
-import { CounterDisplayComponent } from './components/counter-display.component';
-import { CounterService } from './services/counter.service';
+import { LayoutSlot } from '@/shared/layout/layout-slot/layout-slot';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { PostList } from '@/features/blog/toSignal/components/post-list/post-list';
+import { CounterDisplayComponent } from '@/features/counter/components/counter-display.component';
 import { ZardAccordionComponent, ZardAccordionItemComponent } from '@/shared/components/accordion';
 import { ZardButtonComponent } from '@/shared/components/button';
 import { ZardToastComponent } from '@/shared/components/toast';
-import { HttpResourcePost } from '@/components/ui/http-resource-post/http-resource-post';
-import { LayoutSlot } from '@/components/layout/layout-slot/layout-slot';
+import { CounterService } from '@/features/counter/services/counter.service';
+import { HttpResourcePost } from '@/features/blog/http-resource/components/post/http-resource-post';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +18,8 @@ import { LayoutSlot } from '@/components/layout/layout-slot/layout-slot';
     ZardAccordionItemComponent,
     ZardButtonComponent,
     ZardToastComponent,
-    HttpResourcePost,
     LayoutSlot,
+    HttpResourcePost,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -28,5 +28,5 @@ import { LayoutSlot } from '@/components/layout/layout-slot/layout-slot';
 export class App {
   protected readonly title = signal('concept');
   counterService = inject(CounterService);
-  postID = 1
+  postID = 1;
 }

@@ -1,5 +1,5 @@
 import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
-import { CounterService } from '../services/counter.service';
+import { CounterService } from '@/features/counter/services/counter.service';
 
 @Component({
   selector: 'app-counter-display',

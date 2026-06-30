@@ -1,9 +1,9 @@
-import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { PostService } from '@/features/blog/toSignal/services/post.service';
+import { CounterService } from '@/features/counter/services/counter.service';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { PostService } from '../../../../services/post.service';
-import IPost from '../../../../types/IPost';
-import { CounterService } from '../../../../services/counter.service';
+import IPost from '@/types/IPost';
 
 @Component({
   selector: 'app-post-list',
