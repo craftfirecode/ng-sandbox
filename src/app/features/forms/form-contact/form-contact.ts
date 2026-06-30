@@ -1,5 +1,7 @@
 import { Component, ChangeDetectionStrategy, signal } from '@angular/core';
 import { email, form, FormField, minLength, required } from '@angular/forms/signals';
+import { ZardInputDirective } from '@/shared/components/input';
+import { ZardButtonComponent } from '@/shared/components/button';
 
 interface ProfileData {
   username: string;
@@ -8,7 +10,7 @@ interface ProfileData {
 
 @Component({
   selector: 'app-form-contact',
-  imports: [FormField],
+  imports: [FormField, ZardInputDirective, ZardButtonComponent],
   changeDetection: ChangeDetectionStrategy.OnPush, // OnPush wie gefordert
   templateUrl: './form-contact.html',
   styleUrl: './form-contact.css',
