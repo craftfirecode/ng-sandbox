@@ -39,7 +39,10 @@
     <button type="button" z-button zType="outline" (click)="postID = 2">
       ID 2
     </button>
-    <app-http-resource-post [postId]="postID" />
+    <app-http-resource [postId]="postID" />
+  </div>
+  <div>
+    <app-form-contact />
   </div>
 </div>
 <z-toaster variant="default" />

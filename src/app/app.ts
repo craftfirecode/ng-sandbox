@@ -7,6 +7,7 @@ import { ZardButtonComponent } from '@/shared/components/button';
 import { ZardToastComponent } from '@/shared/components/toast';
 import { CounterService } from '@/features/counter/services/counter.service';
 import { HttpResourcePost } from '@/features/blog/http-resource/components/post/http-resource-post';
+import { FormContact } from '@/features/forms/form-contact/form-contact';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { HttpResourcePost } from '@/features/blog/http-resource/components/post/
     ZardToastComponent,
     LayoutSlot,
     HttpResourcePost,
+    FormContact,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',

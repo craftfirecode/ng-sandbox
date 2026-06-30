@@ -1,0 +1,44 @@
+<form (submit)="onSubmit($event)">
+  <div class="form-group">
+    <label for="username">Benutzername</label>
+    <input
+      id="username"
+      type="text"
+      [formField]="profileForm.username"
+    />
+
+    <!-- profileForm.username() aufrufen, um FieldState-Signale zu lesen -->
+    @if (profileForm.username().touched() && profileForm.username().invalid()) {
+      <div class="error-messages">
+        @for (error of profileForm.username().errors(); track  error.kind) {
+          <p class="error-text">{{ error.message }}</p>
+        }
+      </div>
+    }
+  </div>
+
+  <div class="form-group">
+    <label for="email">E-Mail</label>
+    <input
+      id="email"
+      type="email"
+      [formField]="profileForm.email"
+    />
+
+    @if (profileForm.email().touched() && profileForm.email().invalid()) {
+      <div class="error-messages">
+        @for (error of profileForm.email().errors(); track error.kind) {
+          <p class="error-text">{{ error.message }}</p>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- profileForm() als Funktion ausführen, um den globalen Valid-Status zu erhalten -->
+  <button
+    type="submit"
+    [disabled]="!profileForm().valid()"
+    [innerText]="!profileForm().valid() ? 'Not Valid' : 'Valid' "
+  >
+  </button>
+</form>
