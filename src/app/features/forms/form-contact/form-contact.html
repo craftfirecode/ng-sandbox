@@ -34,7 +34,7 @@
     @if (profileForm.email().touched() && profileForm.email().invalid()) {
       <div class="error-messages">
         @for (error of profileForm.email().errors(); track error.kind) {
-          <small class="error-text text-red-500">{{ error.message }}</small>
+          <small class="text-red-500">{{ error.message }}</small>
         }
       </div>
     }

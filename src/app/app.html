@@ -1,48 +1,14 @@
-<div class="container mx-auto mt-5">
-  <app-layout-slot>
-    <div left>
-      Left content
-    </div>
+<nav>
+  <ul>
+    <li>
+      <a routerLink="/">Home</a>
+    </li>
+    <li>
+      <a routerLink="/about">About</a>
+    </li>
+  </ul>
+</nav>
 
-    <div right>
-      Right content
-    </div>
-  </app-layout-slot>
+<router-outlet />
 
-  <app-post-list />
-  <app-counter-display />
-
-  <button type="button" z-button zType="outline" (click)="counterService.increment()">Erhöhen</button>
-  <button type="button" z-button zType="outline" (click)="counterService.decrement()" class="reset">Senken</button>
-  <button type="button" z-button zType="outline" (click)="counterService.reset()">Zurücksetzen</button>
-
-  <z-accordion zDefaultValue="item-1">
-    <z-accordion-item zValue="item-1" zTitle="A Study in Scarlet">
-      The first case of Sherlock Holmes and Dr. Watson. They investigate a murder in London, which leads to a
-      backstory involving Mormons in the U.S. Introduces Holmes’s deductive method.
-    </z-accordion-item>
-
-    <z-accordion-item zValue="item-2" zTitle="The Sign of Four" zDescription="Sir Arthur Conan Doyle">
-      The first case of Sherlock Holmes and Dr. Watson. They investigate a murder in London, which leads to a
-      backstory involving Mormons in the U.S. Introduces Holmes’s deductive method.
-    </z-accordion-item>
-
-    <z-accordion-item zValue="item-3" zTitle="The Hound of the Baskervilles">
-      Holmes and Watson investigate the legend of a demonic hound haunting the Baskerville family. Set in the eerie
-      Dartmoor moorlands, the story involves betrayal and greed.
-    </z-accordion-item>
-  </z-accordion>
-  <div class="my-5">
-    <button type="button" z-button zType="outline" (click)="postID = 1">
-      ID 1
-    </button>
-    <button type="button" z-button zType="outline" (click)="postID = 2">
-      ID 2
-    </button>
-    <app-http-resource [postId]="postID" />
-  </div>
-  <div>
-    <app-form-contact />
-  </div>
-</div>
 <z-toaster variant="default" />
