@@ -5,3 +5,4 @@ Eine Sandbox, um grundlegende Angular Strukturen zu testen und Zard UI auszuprob
 - Zard UI
 - httpResource
 - Signals
+- Signal Forms
