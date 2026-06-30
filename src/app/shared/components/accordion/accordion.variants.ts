@@ -11,14 +11,14 @@ export const accordionItemVariants = cva('border-b border-border flex flex-1 fle
 });
 
 export const accordionTriggerVariants = cva(
-  'cursor-pointer group flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium transition-all outline-none hover:underline focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 w-full',
+  'cursor-pointer group flex flex-1 items-start justify-between gap-4 rounded-md py-4 text-left text-sm font-medium outline-none hover:underline focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] disabled:pointer-events-none disabled:opacity-50 w-full',
   {
     variants: {},
     defaultVariants: {},
   },
 );
 
-export const accordionContentVariants = cva('grid text-sm transition-all', {
+export const accordionContentVariants = cva('grid text-sm', {
   variants: {
     isOpen: {
       true: 'grid-rows-[1fr]',
