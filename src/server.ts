@@ -16,7 +16,7 @@ const angularApp = new AngularNodeAppEngine({
 
   // Trage hier die exakte IP-Adresse deines Hetzner-Servers und deine Domain ein.
   // Dadurch wird verhindert, dass bösartige Host-Header-Injections verarbeitet werden.
-  allowedHosts: ['localhost', '49.12.220.183', 'ng.craftfire.de', 'www.ng.craftfire.de/'],
+  allowedHosts: ['localhost', '49.12.220.183', 'ng.craftfire.de', 'www.ng.craftfire.de'],
 });
 /**
  * Example Express Rest API endpoints can be defined here.
