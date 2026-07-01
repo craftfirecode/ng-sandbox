@@ -10,8 +10,14 @@ import { join } from 'node:path';
 const browserDistFolder = join(import.meta.dirname, '../browser');
 
 const app = express();
-const angularApp = new AngularNodeAppEngine();
+const angularApp = new AngularNodeAppEngine({
+  // Erlaubt das Auslesen der X-Forwarded-* Header von deinem Nginx-Proxy
+  trustProxyHeaders: true,
 
+  // Trage hier die exakte IP-Adresse deines Hetzner-Servers und deine Domain ein.
+  // Dadurch wird verhindert, dass bösartige Host-Header-Injections verarbeitet werden.
+  allowedHosts: ['localhost', '49.12.220.183', 'ng.craftfire.de', 'www.ng.craftfire.de/'],
+});
 /**
  * Example Express Rest API endpoints can be defined here.
  * Uncomment and define endpoints as necessary.
