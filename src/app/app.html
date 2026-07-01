@@ -1,14 +1,20 @@
-<nav>
-  <ul>
-    <li>
-      <a routerLink="/">Home</a>
-    </li>
-    <li>
-      <a routerLink="/about">About</a>
-    </li>
-  </ul>
-</nav>
-
-<router-outlet />
+<div class="container mx-auto">
+  <app-menu />
+</div>
+<div class="container mx-auto">
+  <nav>
+    <ul>
+      <li>
+        <a routerLink="/">Home</a>
+      </li>
+      <li>
+        <a routerLink="/about">About</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+<div class="container mx-auto">
+  <router-outlet />
+</div>
 
 <z-toaster variant="default" />
