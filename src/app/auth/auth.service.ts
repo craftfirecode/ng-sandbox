@@ -17,7 +17,6 @@ export interface User {
 export class AuthService {
   private readonly http = inject(HttpClient);
 
-  // Lädt den User beim Start direkt aus dem LocalStorage
   readonly currentUser = signal<User | null>(this.getStoredUser());
 
   isAuthenticated(): boolean {
@@ -35,7 +34,7 @@ export class AuthService {
 
       if (response) {
         this.currentUser.set(response);
-        localStorage.setItem('test_user', JSON.stringify(response)); // Im Browser speichern
+        localStorage.setItem('test_user', JSON.stringify(response));
         return true;
       }
       return false;
@@ -46,15 +45,11 @@ export class AuthService {
 
   logout(): void {
     this.currentUser.set(null);
-    localStorage.removeItem('test_user'); // Aus Browser löschen
+    localStorage.removeItem('test_user');
   }
 
   private getStoredUser(): User | null {
-    if (typeof window !== 'undefined') {
-      // Verhindert SSR-Fehler
-      const stored = localStorage.getItem('test_user');
-      return stored ? JSON.parse(stored) : null;
-    }
-    return null;
+    const stored = localStorage.getItem('test_user');
+    return stored ? JSON.parse(stored) : null;
   }
 }
