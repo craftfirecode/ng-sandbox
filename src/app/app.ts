@@ -1,8 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { ZardToastComponent } from '@/shared/components/toast';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { ZardDemoMenuDefaultComponent } from '@/features/menu/menu';
-
 import { NgIcon, provideIcons, type IconName } from '@ng-icons/core';
 import {
   lucideCalendar,
@@ -24,12 +21,12 @@ import { ZardButtonComponent } from '@/shared/components/button';
 import { ZardDividerComponent } from '@/shared/components/divider';
 import { LayoutImports } from '@/shared/components/layout/layout.imports';
 import { ZardMenuImports } from '@/shared/components/menu/menu.imports';
-import { ZardSkeletonComponent } from '@/shared/components/skeleton';
 import { ZardTooltipImports } from '@/shared/components/tooltip';
 
 interface MenuItem {
   icon: IconName;
   label: string;
+  href?: string;
   submenu?: { label: string }[];
 }
 
@@ -40,11 +37,12 @@ interface MenuItem {
     ZardButtonComponent,
     ZardBreadcrumbImports,
     ZardMenuImports,
-    ZardSkeletonComponent,
     ZardTooltipImports,
     ZardDividerComponent,
     ZardAvatarComponent,
-    NgIcon
+    NgIcon,
+    RouterOutlet,
+    RouterLink,
   ],
   templateUrl: './app.html',
   styleUrl: './app.css',
@@ -70,8 +68,8 @@ export class App {
   readonly sidebarCollapsed = signal(false);
 
   mainMenuItems: MenuItem[] = [
-    { icon: 'lucideHouse', label: 'Home' },
-    { icon: 'lucideInbox', label: 'Inbox' },
+    { icon: 'lucideHouse', label: 'Home', href: '/' },
+    { icon: 'lucideInbox', label: 'About', href: '/about' },
   ];
 
   workspaceMenuItems: MenuItem[] = [

@@ -17,6 +17,7 @@
             type="button"
             z-button
             zType="ghost"
+            [routerLink]="item.href"
             [class]="sidebarCollapsed() ? 'justify-center' : 'justify-start'"
             [zTooltip]="sidebarCollapsed() ? item.label : ''"
             zPosition="right"
@@ -127,20 +128,10 @@
       <button type="button" z-button zType="ghost" zSize="sm" class="-ml-2" (click)="toggleSidebar()">
         <ng-icon name="lucidePanelLeft" />
       </button>
-
-      <z-divider zOrientation="vertical" class="ml-2 h-4" />
-
-      <z-breadcrumb zWrap="wrap" zAlign="start">
-        <z-breadcrumb-item [routerLink]="['/docs/components/layout']">Home</z-breadcrumb-item>
-        <z-breadcrumb-item>
-          <span aria-current="page">Components</span>
-        </z-breadcrumb-item>
-      </z-breadcrumb>
     </div>
 
     <div class="space-y-4 py-4">
-      <z-skeleton class="h-80 w-full" />
-      <z-skeleton class="h-16 w-full" />
+      <router-outlet />
     </div>
   </z-content>
 </z-layout>
