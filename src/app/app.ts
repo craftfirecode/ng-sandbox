@@ -70,6 +70,7 @@ export class App {
   mainMenuItems: MenuItem[] = [
     { icon: 'lucideHouse', label: 'Home', href: '/' },
     { icon: 'lucideInbox', label: 'About', href: '/about' },
+    { icon: 'lucideInbox', label: 'dashboard', href: '/dashboard' },
   ];
 
   workspaceMenuItems: MenuItem[] = [
