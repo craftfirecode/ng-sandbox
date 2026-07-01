@@ -6,3 +6,4 @@ Eine Sandbox, um grundlegende Angular Strukturen zu testen und Zard UI auszuprob
 - httpResource
 - Signals
 - Signal Forms
+- SSR > Nginx-Proxy [server.ts](src/server.ts)
