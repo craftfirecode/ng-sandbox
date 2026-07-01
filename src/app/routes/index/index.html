@@ -14,8 +14,7 @@
 
   <button type="button" z-button zType="outline" (click)="counterService.increment()">Erhöhen</button>
   <button type="button" z-button zType="outline" (click)="counterService.decrement()" class="reset">Senken</button>
-  <button type="button" z-button zType="outline" (click)="counterService.decrement()" class="reset">Senken</button>
-  <button type="button" class="p-15 border text-bold font-bold" (click)="counterService.reset()">Zurücksetzen</button>
+  <button type="button" z-button zType="outline" (click)="counterService.reset()" class="reset">Zurücksetzten</button>
 
   <z-accordion zDefaultValue="item-1">
     <z-accordion-item zValue="item-1" zTitle="A Study in Scarlet">
