@@ -12,7 +12,12 @@ const browserDistFolder = join(import.meta.dirname, '../browser');
 const app = express();
 const angularApp = new AngularNodeAppEngine({
   // Erlaubt das Auslesen der X-Forwarded-* Header von deinem Nginx-Proxy
-  trustProxyHeaders: true,
+  trustProxyHeaders: [
+    'x-forwarded-for',
+    'x-forwarded-host',
+    'x-forwarded-proto',
+    'x-forwarded-server',
+  ],
 
   // Trage hier die exakte IP-Adresse deines Hetzner-Servers und deine Domain ein.
   // Dadurch wird verhindert, dass bösartige Host-Header-Injections verarbeitet werden.
