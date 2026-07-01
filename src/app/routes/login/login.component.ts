@@ -1,104 +1,108 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
-import { form, FormField, required } from '@angular/forms/signals'; // Angular 21 Signal Forms Imports
+import { form, FormField, required } from '@angular/forms/signals';
 import { AuthService } from '@/auth/auth.service';
+import { ZardButtonComponent } from '@/shared/components/button';
+import { ZardInputDirective } from '@/shared/components/input';
 
 @Component({
   selector: 'app-login',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormField], // Keine ReactiveFormsModule nötig! Nur noch FormField importieren.
+  imports: [
+    FormField,
+    ZardButtonComponent,
+    ZardInputDirective,
+  ],
   template: `
-    <div class="login-container">
-      <h2>API Login Test (Signal Forms)</h2>
-      <p>Verwende diese echten API-Testdaten:</p>
-      <ul>
-        <li>Username: <code>emilys</code></li>
-        <li>Passwort: <code>emilyspass</code></li>
-      </ul>
-
-      <!-- Normales HTML-Form-Event verwenden -->
-      <form (submit)="onSubmit(); $event.preventDefault()">
-        <div class="form-group">
-          <label for="username">Username</label>
-          <!-- Bindung erfolgt direkt über [formField] an den Pfad im FieldTree -->
-          <input id="username" type="text" [formField]="loginForm.username" />
-
-          <!-- Validierungsfehler über Signals auslesen (Feld als Funktion aufrufen!) -->
-          @if (loginForm.username().touched() && loginForm.username().invalid()) {
-            <span class="error-msg">Username ist erforderlich</span>
-          }
+    <div class="flex items-center justify-center px-4 dark:bg-zinc-950">
+      <div
+        class="w-full max-w-md rounded-xl border border-zinc-200 bg-white p-8 shadow-sm dark:border-zinc-800 dark:bg-zinc-900"
+      >
+        <!-- Header -->
+        <div class="mb-6 text-center">
+          <h2 class="text-2xl font-bold tracking-tight text-zinc-900 dark:text-zinc-50">
+            SaaS API Login
+          </h2>
+          <p class="mt-2 text-sm text-zinc-500 dark:text-zinc-400">
+            Gib deine Testdaten ein, um fortzufahren
+          </p>
         </div>
 
-        <div class="form-group">
-          <label for="password">Passwort</label>
-          <input id="password" type="password" [formField]="loginForm.password" />
-
-          @if (loginForm.password().touched() && loginForm.password().invalid()) {
-            <span class="error-msg">Passwort ist erforderlich</span>
-          }
+        <div
+          class="mb-6 rounded-lg bg-zinc-100 p-4 text-xs text-zinc-600 dark:bg-zinc-800/50 dark:text-zinc-300"
+        >
+          <p class="font-semibold mb-1">Echte API-Testdaten:</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Username: <code class="rounded bg-zinc-200 px-1 dark:bg-zinc-700">emilys</code></li>
+            <li>
+              Passwort: <code class="rounded bg-zinc-200 px-1 dark:bg-zinc-700">emilyspass</code>
+            </li>
+          </ul>
         </div>
 
-        @if (errorMessage()) {
-          <p class="error-msg">{{ errorMessage() }}</p>
-        }
+        <!-- Login Formular -->
+        <form (submit)="onSubmit(); $event.preventDefault()" class="space-y-4">
+          <!-- Username Feld -->
+          <div class="space-y-1">
+            <label for="username" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              z-input
+              placeholder="z.B. emilys"
+              [formField]="loginForm.username"
+              class="w-full"
+            />
+            @if (loginForm.username().touched() && loginForm.username().invalid()) {
+              <p class="text-xs text-destructive mt-1 font-medium">Username ist erforderlich</p>
+            }
+          </div>
 
-        <!-- Button wird deaktiviert, wenn das Formular-Signal (Wurzel) invalid ist oder lädt -->
-        <button type="submit" [disabled]="loginForm().invalid() || isLoading()">
-          @if (isLoading()) {
-            Lade...
-          } @else {
-            Einloggen
+          <!-- Passwort Feld -->
+          <div class="space-y-1">
+            <label for="password" class="text-sm font-medium text-zinc-700 dark:text-zinc-300">
+              Passwort
+            </label>
+            <input
+              id="password"
+              type="password"
+              z-input
+              placeholder="••••••••"
+              [formField]="loginForm.password"
+              class="w-full"
+            />
+            @if (loginForm.password().touched() && loginForm.password().invalid()) {
+              <p class="text-xs text-destructive mt-1 font-medium">Passwort ist erforderlich</p>
+            }
+          </div>
+
+          @if (errorMessage()) {
+            <div
+              class="rounded-lg bg-destructive/10 p-3 text-sm text-destructive font-medium border border-destructive/20"
+            >
+              {{ errorMessage() }}
+            </div>
           }
-        </button>
-      </form>
+
+          <button
+            type="submit"
+            z-button
+            class="w-full mt-2"
+            [disabled]="loginForm().invalid() || isLoading()"
+          >
+            @if (isLoading()) {
+              <span class="flex items-center justify-center gap-2">
+                Lade...
+              </span>
+            } @else {
+              Einloggen
+            }
+          </button>
+        </form>
+      </div>
     </div>
-  `,
-  styles: `
-    .login-container {
-      max-width: 400px;
-      margin: 50px auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-family: sans-serif;
-    }
-    .form-group {
-      margin-bottom: 15px;
-      display: flex;
-      flex-direction: column;
-    }
-    .form-group label {
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    .form-group input {
-      padding: 8px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .error-msg {
-      color: red;
-      font-weight: bold;
-      font-size: 13px;
-      margin-top: 4px;
-    }
-    button {
-      padding: 10px 15px;
-      background-color: #0056b3;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
-    code {
-      background-color: #eee;
-      padding: 2px 4px;
-      border-radius: 4px;
-    }
   `,
 })
 export class LoginComponent {
@@ -114,8 +118,8 @@ export class LoginComponent {
   });
 
   readonly loginForm = form(this.loginModel, (schemaPath) => {
-    required(schemaPath.username, { message: 'Username ist erforderlich.' });
-    required(schemaPath.password, { message: 'Passwort ist erforderlich.' });
+    required(schemaPath.username);
+    required(schemaPath.password);
   });
 
   async onSubmit(): Promise<void> {
