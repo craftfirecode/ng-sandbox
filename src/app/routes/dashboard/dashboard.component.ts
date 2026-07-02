@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@/auth/auth.service';
+import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,12 +17,28 @@ import { AuthService } from '@/auth/auth.service';
           <p><strong>E-Mail:</strong> {{ user.email }}</p>
           <p><strong>Rolle/ID:</strong> ID {{ user.id }}</p>
         </div>
+        <pre><code>{{ user | json }}</code></pre>
       }
 
       <button (click)="logout()">Abmelden</button>
     </div>
   `,
   styles: `
+    pre {
+      background-color: #1e1e1e;
+      color: #9cdcfe;
+      padding: 1.25rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: 'Fira Code', Consolas, Monaco, 'Courier New', monospace;
+      font-size: 0.9rem;
+      border: 1px solid #2d2d2d;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    code {
+      color: greenyellow;
+    }
     .dashboard-container {
       max-width: 600px;
       margin: 50px auto;
@@ -47,6 +64,7 @@ import { AuthService } from '@/auth/auth.service';
     }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [JsonPipe],
 })
 export class DashboardComponent {
   readonly authService = inject(AuthService);
