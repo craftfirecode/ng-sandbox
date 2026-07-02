@@ -12,6 +12,7 @@ import {
   lucidePanelLeft,
   lucideSearch,
   lucideSettings,
+  lucideShieldClose,
   lucideUser,
 } from '@ng-icons/lucide';
 
@@ -59,6 +60,7 @@ interface MenuItem {
       lucidePanelLeft,
       lucideCalendar,
       lucideSearch,
+      lucideShieldClose,
     }),
   ],
 })
@@ -70,7 +72,7 @@ export class App {
   mainMenuItems: MenuItem[] = [
     { icon: 'lucideHouse', label: 'Home', href: '/' },
     { icon: 'lucideInbox', label: 'About', href: '/about' },
-    { icon: 'lucideInbox', label: 'dashboard', href: '/dashboard' },
+    { icon: 'lucideShieldClose', label: 'Dashboard', href: '/dashboard' },
   ];
 
   workspaceMenuItems: MenuItem[] = [

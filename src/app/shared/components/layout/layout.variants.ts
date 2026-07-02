@@ -26,15 +26,15 @@ export const footerVariants = cva('flex items-center px-6 bg-background border-t
 });
 
 // Content Variants
-export const contentVariants = cva('flex-1 flex flex-col overflow-auto bg-background p-6 min-h-dvh');
+export const contentVariants = cva('flex-1 flex flex-col overflow-auto h-[100vh] bg-background p-6 min-h-dvh');
 
 // Sidebar Variants
 export const sidebarVariants = cva(
-  'h-[100vh] relative flex flex-col transition-all duration-300 ease-in-out border-r shrink-0 p-6 bg-sidebar text-sidebar-foreground border-sidebar-border',
+  'h-full relative flex flex-col transition-all duration-300 ease-in-out border-r shrink-0 p-6 bg-sidebar text-sidebar-foreground border-sidebar-border',
 );
 
 export const sidebarTriggerVariants = cva(
-  'absolute bottom-4 z-10 flex items-center justify-center cursor-pointer rounded-sm border border-sidebar-border bg-sidebar hover:bg-sidebar-accent transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2 size-6 -right-3',
+  'absolute -right-3 top-1/2 -translate-y-1/2 z-10 flex items-center justify-center size-6 cursor-pointer rounded-sm border border-sidebar-border bg-sidebar transition-colors hover:bg-sidebar-accent focus:outline-none focus-visible:ring-2 focus-visible:ring-sidebar-ring focus-visible:ring-offset-2',
 );
 
 // Sidebar Group Variants
